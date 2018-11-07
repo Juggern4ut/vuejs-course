@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>VUE</title>
+		<script type="text/javascript" src="../vue.js"></script>
+	</head>
+	<body>
+		<main>
+			<button v-on:click="counter++">Increase</button>
+			<button v-on:click="counter--">Decrease</button>
+			<button v-on:click="secondCounter++">Increase Second</button>
+			<p>{{counter}} = {{result()}} | {{output}}</p>
+			<p>{{secondCounter}}</p>
+		</main>
+		<script type="text/javascript" src="script.js"></script>
+	</body>
+</html>

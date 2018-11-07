@@ -2,13 +2,17 @@
 <html>
 	<head>
 		<title>VUE</title>
-		<script type="text/javascript" src="vue.js"></script>
+		<script type="text/javascript" src=".../vue.js"></script>
 	</head>
 	<body>
 		<main>
 			<button v-on:click="increase(2, $event)">Click me</button>
 			<p>{{counter}}</p>
-			<p v-on:mousemove='updateCoordinates'>Coordinates: {{x}} / {{y}}</p>
+			<p v-on:mousemove='updateCoordinates'>
+				Coordinates: {{x}} / {{y}}
+				<span v-on:mousemove.stop="">Dead spot</span>
+			</p>
+			<input type="text" v-on:keyup.enter.space="alertMe" name="">
 		</main>
 		<script type="text/javascript" src="script.js"></script>
 	</body>
