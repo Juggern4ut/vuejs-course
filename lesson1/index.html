@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>VUE</title>
+		<script type="text/javascript" src="vue.js"></script>
+	</head>
+	<body>
+		<main>
+			<p>VueJS is pretty cool - {{name}} {{age}}</p>
+			<p>{{age*3}}</p>
+			<p>{{Math.random()}}</p>
+			<img v-bind:src="imgLink">
+			<input type="text" v-bind:value="name">
+
+			<h1 v-once>{{title}}</h1>
+			<p>{{ sayHello() }}<p>
+			<a v-bind:href="link">Google</a>
+			<p v-html="finishedLink"></p>
+		</main>
+		<script type="text/javascript" src="script.js"></script>
+	</body>
+</html>
