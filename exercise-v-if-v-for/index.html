@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>VUE</title>
+		<script type="text/javascript" src="../vue.js"></script>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<main>
+			<button @click="visible = !visible">Toggle</button>
+			<p v-if="visible">You either see me</p>
+			<p v-show="!visible">... or me</p>
+
+			<hr />
+
+			<ul>
+				<li v-for="(item, index) in items">{{index}} - {{item}}</li>
+			</ul>
+
+			<hr />
+			<ul>
+				<li v-for="(element, key, index) in book">({{index}}) {{key}}: {{element}}</li>
+			</ul>
+
+			<hr />
+			<ul>
+				<li v-for="val in testObject">
+					<p v-if="Array.isArray(val)" v-for="n in val">{{n}}</p>
+					<!--<p v-for="n in val.data">{{n}}</p>-->
+				</li>
+			</ul>
+		</main>
+		<script type="text/javascript" src="script.js"></script>
+	</body>
+</html>

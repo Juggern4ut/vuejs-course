@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>VUE</title>
+		<script type="text/javascript" src="../vue.js"></script>
+		<style type="text/css">
+		
+		</style>
+	</head>
+	<body>
+		<main>
+
+			<button @click="items.push({firstname: 'Katrin', lastname: 'Gold', hobbies: ['Eat', 'Sleep']});">Add Person</button>
+
+			<ul>
+				<li v-for="(person, i) in items" :key="person.firstname">{{i+1}} - {{person.firstname}} {{person.lastname}}</li>
+			</ul>
+
+			<template v-for="(person, i) in items">
+				<h1>{{i+1}}: {{person.firstname}} {{person.lastname}}</h1>	
+				<ul>
+					<li v-for="hobby in person.hobbies">{{hobby}}</li>
+				</ul>
+			</template>
+
+			<ul>
+				<li v-for="n in 10">{{n}}</li>
+			</ul>
+		</main>
+		<script type="text/javascript" src="script.js"></script>
+	</body>
+</html>

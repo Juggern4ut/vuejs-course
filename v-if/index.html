@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>VUE</title>
+		<script type="text/javascript" src="../vue.js"></script>
+		<style type="text/css">
+		
+		</style>
+	</head>
+	<body>
+		<main>
+			<p v-if="show">You can see me</p>
+			<p v-else>Now you can see me</p>
+			<template v-if="show">
+				<p>Inside a template</p>
+			</template>
+			<p v-show="show">I'm still around, but hidden</p>
+			<button @click="show = !show">Switch</button>
+		</main>
+		<script type="text/javascript" src="script.js"></script>
+	</body>
+</html>

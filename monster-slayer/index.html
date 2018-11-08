@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monster Slayer</title>
+    <script src="../vue.js"></script>
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="app">
+    <section class="row">
+        <div class="small-6 columns">
+            <h1 class="text-center">YOU</h1>
+            <div class="healthbar">
+                <div :style="{'width':playerHp+'%'}" class="healthbar text-center" style="background-color: green; margin: 0; color: white;">
+                    {{playerHp}}
+                </div>
+            </div>
+        </div>
+        <div class="small-6 columns">
+            <h1 class="text-center">MONSTER</h1>
+            <div class="healthbar">
+                <div :style="{'width':monsterHp+'%'}" class="healthbar text-center" style="background-color: green; margin: 0; color: white;">
+                    {{monsterHp}}
+                </div>
+            </div>
+        </div>
+    </section>
+    <section v-if="!gameRunning" class="row controls">
+        <div class="small-12 columns">
+            <button @click="gameRunning = true;" id="start-game">START NEW GAME</button>
+        </div>
+    </section>
+    <section v-if="gameRunning" class="row controls">
+        <div class="small-12 columns">
+            <button @click="attack(false)" id="attack">ATTACK</button>
+            <button @click="attack(true)" id="special-attack">SPECIAL ATTACK</button>
+            <button @click="heal" id="heal">HEAL</button>
+            <button @click="reset" id="give-up">GIVE UP</button>
+        </div>
+    </section>
+    <section class="row log">
+        <div class="small-12 columns">
+            <ul>
+                <li v-for="entry in log">
+                    <p class="player-turn">{{entry.player}}</p>
+                    <p class="monster-turn">{{entry.monster}}</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
