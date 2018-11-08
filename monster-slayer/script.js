@@ -1,22 +1,18 @@
 var app = new Vue({
 	el: '#app',
 	data: {
-		gameRunning: false,
+		gameIsRunning: false,
 		playerHp: 100,
 		monsterHp: 100,
 		log: []
 	}, methods:{
 		attack: function(isSpecial){
-			var playerDamage = Math.floor(Math.random() * 10);
-
-			if(isSpecial){
-				var monsterDamage = Math.floor(Math.random() * 15);
-			}else{
-				var monsterDamage = Math.floor(Math.random() * 10);
-			}
-
-			this.log.push({
-				player: `The Player did ${monsterDamage} damage`,
+			var playerDamage = Math.floor(Math.random() * 12);
+			var monsterDamage = isSpecial 	? Math.floor(Math.random() * 16) 
+											: Math.floor(Math.random() * 10);
+			
+			this.log.unshift({
+				player: `The Player did ${monsterDamage} ${isSpecial ? 'special-' : ''}damage`,
 				monster: `The Monster did ${playerDamage} damage`
 			});
 
@@ -26,9 +22,9 @@ var app = new Vue({
 		},
 		heal: function(){
 			var playerDamage = Math.floor(Math.random() * 10);
-			var playerHeal = Math.floor(Math.random() * 12);
+			var playerHeal = Math.floor(Math.random() * 13);
 
-			this.log.push({
+			this.log.unshift({
 				player: `The Player healed ${playerHeal} HP`,
 				monster: `The Monster did ${playerDamage} damage`
 			});
@@ -38,14 +34,14 @@ var app = new Vue({
 			this.checkState();
 		},
 		reset: function(){
-			this.gameRunning = false;
+			this.gameIsRunning = false;
 			this.playerHp = 100;
 			this.monsterHp = 100;
 			this.log = [];
 		},
 		checkState: function(){
 			if(this.monsterHp <= 0){
-				alert('You won!')
+				alert('You won!');
 				return this.reset();
 			}
 

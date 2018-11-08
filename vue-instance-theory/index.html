@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>VUE</title>
+		<script type="text/javascript" src="../vue.js"></script>
+		<style type="text/css">
+		[v-cloak] {
+			display: none;
+		}
+		</style>
+	</head>
+	<body>
+		<section>
+			<h1 v-cloak>{{title}}</h1>
+			<button @click.once="title = 'New title'" v-cloak>Change title</button>
+		</section>
+		<aside>
+			<h1 v-cloak>{{title}}</h1>
+			<button @click.once="a">I only work once</button>
+			<button @click.right.prevent="a">Klick me with the right mouse button</button>
+		</aside>
+		<script type="text/javascript" src="script.js"></script>
+	</body>
+</html>
