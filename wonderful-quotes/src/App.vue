@@ -1,43 +1,50 @@
 <template>
-	<div id="app">
-		<button @click="currentView = 'app-quote'">Quote</button>
-		<button @click="currentView = 'app-author'">Author</button>
-		<button @click="currentView = 'app-new'">New</button>
-		<p>{{currentView}}</p>
-		<!--<app-quote>
-		</app-quote>-->
-		<keep-alive>
-			<component :is="currentView">
-				<h2 slot="title">{{quoteTitle}}</h2>
-				<p slot="content">Fuck her right in the pu$$y</p>
-				<p slot="subtitle">I overwrite the default span</p>
-			</component>
-		</keep-alive>
-	</div>
-</template> 
+    <div class="container">
+    	<app-header :amount="quotes.length" :max="maxQuotes"></app-header>
+    	<app-new-quote></app-new-quote>
+    	<app-quote-grid :quotes="quotes"></app-quote-grid>
+    	<div><p>Info: Click a quote to delete it!</p></div>
+    </div>
+</template>
 
 <script>
 
-	import Quote from './components/Quote.vue'
-	import Author from './components/Author.vue'
-	import New from './components/New.vue'
+	import Header from "./components/Header.vue";
+	import NewQuote from "./components/NewQuote.vue";
+	import QuoteGrid from "./components/QuoteGrid.vue";
+	import {dataBus} from './main.js';
 
-	export default {
-		data: function(){
-			return {
-				currentView: 'app-quote',
-				quoteTitle: 'The Quote'
-			}
-		},
-		components: {
-			'app-quote': Quote,
-			'app-author': Author,
-			'app-new': New,
+    export default {
+        data: function(){
+        	return {
+        		quotes: ['Just a quote to see something'],
+        		maxQuotes: 10
+        	}
+        },
+        components: {
+        	"app-quote-grid":QuoteGrid,
+        	"app-new-quote":NewQuote,
+        	"app-header":Header
+        }, 
+        created(){
+			dataBus.$on('quoteAdded', (newQuote)=>{
+				if(newQuote.length == 0){
+					return alert('Cannot add empty quote');
+				}
+				
+				if(this.quotes.length >= 10){
+					return alert("Too many quotes, please delete some!");
+				}
+
+				this.quotes.push(newQuote);
+			});
+
+			dataBus.$on('deleteQuote', (index)=>{
+				this.quotes.splice(index, 1);
+			});
 		}
-	}
-
+    }
 </script>
 
 <style>
-
 </style>

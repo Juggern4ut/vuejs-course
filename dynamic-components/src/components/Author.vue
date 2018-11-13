@@ -1,5 +1,5 @@
 <template>
 	<div>
-		<h3>Author</h3>
+		<slot name="title"></slot>
 	</div>
 </template>
