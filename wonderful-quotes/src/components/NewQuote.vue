@@ -1,6 +1,6 @@
 <template>
 	<form @submit.prevent="addQuote">
-		<textarea v-model="newQuote">
+		<textarea placeholder="Enter Quote here" v-model="newQuote">
 			
 		</textarea>
 		<button>Add Quote</button>
@@ -37,6 +37,7 @@
 		resize: none;
 		height: 150px;
 		padding: 10px;
+		outline: none;
 	}
 
 	form button{
@@ -48,6 +49,9 @@
 		bottom: 5px;
 		transition: .5s ease-out;
 		outline: none;
+		color: white;
+		font-size: 17px;
+		font-weight: bold;
 	}
 
 	form button:hover{

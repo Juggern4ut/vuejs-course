@@ -1,6 +1,8 @@
 <template>
 	<div class="quote">
-		<slot></slot>
+		<span>
+			<slot></slot>
+		</span>
 	</div>
 </template>
 
@@ -23,7 +25,18 @@
 		border: 1px solid #888;
 		display: inline-block;
 		margin: 10px;
+		position: relative;
+		background-color: #d9f1e6;
+		transition: .2s ease-out;
 	}
+
+	.quote span{
+		position: absolute;
+		width: 100%;
+		top: 50%;
+		left: 0px;
+		transform: translateY(-50%);
+	}	
 
 	.quote:hover{
 		background-color: #ffe2e2;
