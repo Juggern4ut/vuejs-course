@@ -53,5 +53,6 @@
 		height: 100%;
 		transition: .5s ease-out;
 		z-index: -1;
+		border-right: 2px solid #225f43;
 	}
 </style>

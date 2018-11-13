@@ -31,7 +31,7 @@
 				if(newQuote.length == 0){
 					return alert('Cannot add empty quote');
 				}
-				
+
 				if(this.quotes.length >= 10){
 					return alert("Too many quotes, please delete some!");
 				}
@@ -47,4 +47,17 @@
 </script>
 
 <style>
+	p{
+		background-color: #42b983;
+		padding: 10px;
+		text-align: center;
+		color: #FFF;
+		font-family: consolas;
+		font-size: 16px;
+		font-weight: bold;
+		border-radius: 5px;
+		border: 2px solid #225f43;
+		max-width: 500px;
+		margin: 0px auto;
+	}
 </style>
